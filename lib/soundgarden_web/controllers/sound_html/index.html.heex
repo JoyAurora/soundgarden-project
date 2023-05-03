@@ -1,0 +1,24 @@
+<.header>
+  Listing Sounds
+  <:actions>
+    <.link href={~p"/sounds/new"}>
+      <.button>New Sound</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="sounds" rows={@sounds} row_click={&JS.navigate(~p"/sounds/#{&1}")}>
+  <:col :let={sound} label="Filename"><%= sound.filename %></:col>
+  <:col :let={sound} label="Object name"><%= sound.object_name %></:col>
+  <:action :let={sound}>
+    <div class="sr-only">
+      <.link navigate={~p"/sounds/#{sound}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/sounds/#{sound}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={sound}>
+    <.link href={~p"/sounds/#{sound}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

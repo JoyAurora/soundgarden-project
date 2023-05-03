@@ -1,0 +1,64 @@
+<.simple_form :let={f} for={@changeset} action={@action} multipart>
+  <.input field={f[:name]} type="text" label="Name" />
+
+  <label for="images">Images</label>
+  <div id="images">
+    <%= for {image_changeset, index} <- Enum.with_index(f |> Phoenix.HTML.Form.inputs_for(:images)) do %>
+      <div>
+        <%= if image_changeset.data.id do %>
+          <%= Phoenix.HTML.Form.text_input(image_changeset, :id, type: "hidden", name: "place[images][#{index}][id]") %>
+          <img width="100" src={"data:" <> image_changeset.data.content_type <> ";base64," <> Base.encode64(image_changeset.data.file)} alt={image_changeset.data.filename} />
+        <% end %>
+        <%= Phoenix.HTML.Form.file_input(image_changeset, :file) %>
+      </div>
+    <% end %>
+  </div>
+
+  <label for="impulse">Impulse Response</label>
+  <label for="impulse">Channels</label>
+  <div id="impulse_responses">
+    <%= for {impulse_response_changeset, index} <- Enum.with_index(f |> Phoenix.HTML.Form.inputs_for(:impulse_responses)) do %>
+      <div>
+        <%= if impulse_response_changeset.data.id do %>
+          <%= Phoenix.HTML.Form.text_input(impulse_response_changeset, :id, type: "hidden", name: "place[impulse_responses][#{index}][id]") %>
+          <img width="100" src={"data:" <> impulse_response_changeset.data.content_type <> ";base64," <> Base.encode64(impulse_response_changeset.data.file)} alt={impulse_response_changeset.data.filename} />
+        <% end %>
+        <%= Phoenix.HTML.Form.file_input(impulse_response_changeset, :file) %>
+      </div>
+    <% end %>
+  </div>
+
+<div id="add-channel" class="button is-info">Add another channel</div>
+
+<:actions>
+  <.button>Save Place</.button>
+</:actions>
+</.simple_form>
+
+
+<script>
+  const imagesDiv = document.getElementById("images");
+  const newIndex = imagesDiv.children.length;
+  const newImageDiv = document.createElement("div");
+
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.name = `place[images][${newIndex}][file]`;
+  newImageDiv.appendChild(fileInput);
+
+  imagesDiv.appendChild(newImageDiv);
+
+  document.getElementById("add-channel").addEventListener("click", function() {
+    const mainDiv = document.getElementById("impulse_responses");
+    const newIndex = mainDiv.children.length;
+    const newDiv = document.createElement("div");
+
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.name = `place[impulse_responses][${newIndex}][file]`;
+    newDiv.appendChild(fileInput);
+
+    mainDiv.appendChild(newDiv);
+  })
+
+</script>

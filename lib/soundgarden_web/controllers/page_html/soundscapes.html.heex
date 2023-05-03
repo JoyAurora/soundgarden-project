@@ -1,0 +1,25 @@
+<div class="home mt-24">
+  <section id="place-selection">
+    <h2>Select a Soundscape</h2>
+    <select id="place-dropdown">
+  <%= for place <- @places do %>
+    <%= if first_image = Enum.at(place.images, 0) do %>
+      <option value={first_image.id}><%= place.name %></option>
+    <% end %>
+  <% end %>
+</select>
+  </section>
+
+  <section id="3d-viewer">
+  <div id="panorama" style="width:600px;height:390px;" data-first-image-id={Enum.at(@places, 0) |> Map.get(:images) |> Enum.at(0) |> Map.get(:id)}></div>
+  </section>
+
+  <section id="place-info">
+    <h2>Soundscape Information</h2>
+    <div id="info-container">
+    </div>
+  </section>
+
+  <button type="button" id="play" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Listen</button>
+
+</div>

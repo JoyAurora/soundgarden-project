@@ -1,0 +1,8 @@
+<.header>
+  Edit Sound <%= @sound.id %>
+  <:subtitle>Use this form to manage sound records in your database.</:subtitle>
+</.header>
+
+<.sound_form changeset={@changeset} action={~p"/sounds/#{@sound}"} />
+
+<.back navigate={~p"/sounds"}>Back to sounds</.back>

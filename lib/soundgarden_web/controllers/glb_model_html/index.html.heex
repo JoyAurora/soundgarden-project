@@ -1,0 +1,23 @@
+<.header>
+  Listing Glbs
+  <:actions>
+    <.link href={~p"/glbs/new"}>
+      <.button>New Glb models</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="glbs" rows={@glbs} row_click={&JS.navigate(~p"/glbs/#{&1}")}>
+  <:col :let={glb_model} label="Filename"><%= glb_model.filename %></:col>
+  <:action :let={glb_model}>
+    <div class="sr-only">
+      <.link navigate={~p"/glbs/#{glb_model}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/glbs/#{glb_model}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={glb_model}>
+    <.link href={~p"/glbs/#{glb_model}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

@@ -1,0 +1,8 @@
+<.header>
+  Edit Instrument <%= @instrument.id %>
+  <:subtitle>Use this form to manage instrument records in your database.</:subtitle>
+</.header>
+
+<.instrument_form changeset={@changeset} action={~p"/instruments/#{@instrument}"} />
+
+<.back navigate={~p"/instruments"}>Back to instruments</.back>

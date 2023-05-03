@@ -1,0 +1,16 @@
+<.header>
+  Sound <%= @sound.id %>
+  <:subtitle>This is a sound record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/sounds/#{@sound}/edit"}>
+      <.button>Edit sound</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Filename"><%= @sound.filename %></:item>
+  <:item title="Object name"><%= @sound.object_name %></:item>
+</.list>
+
+<.back navigate={~p"/sounds"}>Back to sounds</.back>

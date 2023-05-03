@@ -1,0 +1,27 @@
+<.header>
+  Place <%= @place.id %>
+  <:subtitle>This is a place record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/places/#{@place}/edit"}>
+      <.button>Edit place</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @place.name %></:item>
+</.list>
+
+<!-- Add the images section -->
+<section>
+  <h3>Images</h3>
+  <div class="thumbnails">
+    <%= for image <- @place.images do %>
+      <div class="thumbnail">
+        <img width="100" src={"data:" <> image.content_type <> ";base64," <> Base.encode64(image.file)} alt={image.filename} />
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<.back navigate={~p"/places"}>Back to places</.back>

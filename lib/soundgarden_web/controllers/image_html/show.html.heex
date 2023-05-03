@@ -1,0 +1,19 @@
+<header>
+  <h1>Image <%= @image.id %></h1>
+  <h2>This is an image record from your database.</h2>
+  <div class="actions">
+    <a href={~p"/images/#{@image.id}/edit"}>
+      <button>Edit image</button>
+    </a>
+  </div>
+</header>
+
+<ul>
+  <li><strong>Filename:</strong> <%= @image.filename %></li>
+</ul>
+
+<!-- Display the image using a data URL -->
+<img width="100" src={"data:" <> @content_type <> ";base64," <> Base.encode64(@binary_data)} alt={@image.filename} />
+
+<a href={~p"/images"}>Back to images</a>
+

@@ -1,0 +1,15 @@
+<.header>
+  Impulse response <%= @impulse_response.id %>
+  <:subtitle>This is a impulse_response record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/impulse_responses/#{@impulse_response}/edit"}>
+      <.button>Edit impulse_response</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Filename"><%= @impulse_response.filename %></:item>
+</.list>
+
+<.back navigate={~p"/impulse_responses"}>Back to impulse_responses</.back>

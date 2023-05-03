@@ -1,0 +1,15 @@
+<.header>
+  Glb models <%= @glb_model.id %>
+  <:subtitle>This is a glb_model record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/glbs/#{@glb_model}/edit"}>
+      <.button>Edit glb_model</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Filename"><%= @glb_model.filename %></:item>
+</.list>
+
+<.back navigate={~p"/glbs"}>Back to glbs</.back>

@@ -1,0 +1,23 @@
+<.header>
+  Soundscape Entries
+  <:actions>
+    <.link href={~p"/places/new"}>
+      <.button>New Place</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="places" rows={@places} row_click={&JS.navigate(~p"/places/#{&1}")}>
+  <:col :let={place} label="Location"><%= place.name %></:col>
+  <:action :let={place}>
+    <div class="sr-only">
+      <.link navigate={~p"/places/#{place}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/places/#{place}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={place}>
+    <.link href={~p"/places/#{place}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

@@ -1,0 +1,18 @@
+<.simple_form :let={f} for={@changeset} action={@action} multipart>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:name]} type="text" label="Name" />
+  <label for="place_id">Place</label>
+  <select name="image[place_id]" id="place_id">
+    <option value="">Select a place</option>
+    <%= for place <- @places do %>
+      <option value={place.id}><%= place.name %></option>
+    <% end %>
+  </select>
+  <%= Phoenix.HTML.Form.file_input(f, :file) %>
+  <:actions>
+    <.button>Save Image</.button>
+  </:actions>
+</.simple_form>
+

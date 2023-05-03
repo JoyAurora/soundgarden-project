@@ -1,0 +1,8 @@
+<.header>
+  Edit Impulse response <%= @impulse_response.id %>
+  <:subtitle>Use this form to manage impulse_response records in your database.</:subtitle>
+</.header>
+
+<.impulse_response_form changeset={@changeset} action={~p"/impulse_responses/#{@impulse_response}"} />
+
+<.back navigate={~p"/impulse_responses"}>Back to impulse_responses</.back>

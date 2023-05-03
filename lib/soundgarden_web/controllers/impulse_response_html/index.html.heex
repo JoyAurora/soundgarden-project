@@ -1,0 +1,23 @@
+<.header>
+  Listing Impulse responses
+  <:actions>
+    <.link href={~p"/impulse_responses/new"}>
+      <.button>New Impulse response</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="impulse_responses" rows={@impulse_responses} row_click={&JS.navigate(~p"/impulse_responses/#{&1}")}>
+  <:col :let={impulse_response} label="Filename"><%= impulse_response.filename %></:col>
+  <:action :let={impulse_response}>
+    <div class="sr-only">
+      <.link navigate={~p"/impulse_responses/#{impulse_response}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/impulse_responses/#{impulse_response}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={impulse_response}>
+    <.link href={~p"/impulse_responses/#{impulse_response}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

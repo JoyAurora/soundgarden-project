@@ -1,0 +1,23 @@
+<.header>
+  Listing Instruments
+  <:actions>
+    <.link href={~p"/instruments/new"}>
+      <.button>New Instrument</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="instruments" rows={@instruments} row_click={&JS.navigate(~p"/instruments/#{&1}")}>
+  <:col :let={instrument} label="Name"><%= instrument.name %></:col>
+  <:action :let={instrument}>
+    <div class="sr-only">
+      <.link navigate={~p"/instruments/#{instrument}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/instruments/#{instrument}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={instrument}>
+    <.link href={~p"/instruments/#{instrument}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

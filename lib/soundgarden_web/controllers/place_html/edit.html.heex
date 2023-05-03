@@ -1,0 +1,8 @@
+<.header>
+  Edit Place <%= @place.id %>
+  <:subtitle>Use this form to manage place records in your database.</:subtitle>
+</.header>
+
+<.place_form changeset={@changeset} action={~p"/places/#{@place}"} />
+
+<.back navigate={~p"/places"}>Back to places</.back>

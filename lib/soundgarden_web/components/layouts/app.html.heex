@@ -1,0 +1,19 @@
+<header class="fixed top-0 left-0 w-full bg-white shadow">
+    <nav class="container mx-auto px-4 py-2 flex items-center justify-between">
+      <div class="logo text-lg font-semibold">
+        Sound Garden
+      </div>
+      <ul class="flex space-x-4">
+        <li><a href="/" class="text-gray-700 hover:text-pink-400">Home</a></li>
+        <li><a href="/instruments" class="text-gray-700 hover:text-pink-400">Instruments</a></li>
+        <li><a href="/soundscapes" class="text-gray-700 hover:text-pink-400">Soundscapes</a></li>
+        <li><a href="/admin" class="text-gray-700 hover:text-pink-400">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+<main class="mt-24 px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-2xl">
+    <.flash_group flash={@flash} />
+    <%= @inner_content %>
+  </div>
+</main>
