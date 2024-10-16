@@ -1,22 +1,18 @@
 defmodule SoundgardenWeb.ImageHTML do
+  use Phoenix.Component
   use SoundgardenWeb, :html
 
-  # Define all attributes before the first function or macro
   @doc """
-  Renders an image form.
+  Renders an edit form for images.
   """
   attr :changeset, Ecto.Changeset, required: true
   attr :action, :string, required: true
   attr :places, :list, default: []
 
-  # After the attribute definitions, you can call embed_templates
-  embed_templates "image_html/*"
-
-  # Define your function
-  def image_form(assigns) do
+  def edit(assigns) do
     ~H"""
     <form action={@action} method="post">
-      <!-- Example Form fields -->
+      <!-- Form fields for editing an image go here -->
       <label for="place">Select a Place:</label>
       <select name="place" id="place">
         <%= for place <- @places do %>
