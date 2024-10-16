@@ -25,7 +25,7 @@ defmodule SoundgardenWeb.Router do
     get "/impulse_responses/:id/play", ImpulseResponseController, :play
 
     resources "/soundscapedata", PlaceController
-    resources "/instrumentdata", InstrumentsController
+    resources "/instrumentdata", InstrumentController
     resources "/places", PlaceController
     resources "/impulse_responses", ImpulseResponseController
     resources "/sounds", SoundController
