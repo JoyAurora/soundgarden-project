@@ -14,10 +14,10 @@ defmodule Soundgarden.Archive.ImpulseResponse do
   end
 
   @doc false
-  def changeset(image, attrs) do
-    image
-    |> cast(attrs, [:filename, :place_id, :file, :content_type])
-    |> validate_required([:filename, :file, :content_type])
+  def changeset(impulse_response, attrs) do
+    impulse_response
+    |> cast(attrs, [:filename, :place_id, :file, :content_type, :channel, :channel_name])
+    |> validate_required([:filename, :content_type, :file])
     |> validate_file_is_binary()
   end
 
@@ -27,12 +27,5 @@ defmodule Soundgarden.Archive.ImpulseResponse do
     else
       add_error(changeset, :file, "must be binary data")
     end
-  end
-
-  @doc false
-  def changeset(impulse_response, attrs) do
-    impulse_response
-    |> cast(attrs, [:filename])
-    |> validate_required([:filename])
   end
 end
