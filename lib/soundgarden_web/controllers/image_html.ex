@@ -12,11 +12,11 @@ defmodule SoundgardenWeb.ImageHTML do
   def edit(assigns) do
     ~H"""
     <form action={@action} method="post">
-      <!-- Form fields for editing an image go here -->
+      <!-- Example Form fields -->
       <label for="place">Select a Place:</label>
       <select name="place" id="place">
         <%= for place <- @places do %>
-          <option value="<%= place.id %>"><%= place.name %></option>
+          <option value={place.id}><%= place.name %></option>
         <% end %>
       </select>
 
