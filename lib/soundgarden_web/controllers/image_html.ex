@@ -2,6 +2,8 @@ defmodule SoundgardenWeb.ImageHTML do
   use Phoenix.Component
   use SoundgardenWeb, :html
 
+  import Phoenix.HTML.Form
+
   @doc """
   Renders an edit form for images.
   """
@@ -12,7 +14,7 @@ defmodule SoundgardenWeb.ImageHTML do
   def edit(assigns) do
     ~H"""
     <form action={@action} method="post">
-      <!-- Example Form fields -->
+      <!-- Form fields for editing an image go here -->
       <label for="place">Select a Place:</label>
       <select name="place" id="place">
         <%= for place <- @places do %>
